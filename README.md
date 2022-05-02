@@ -1,4 +1,4 @@
 # jenkins-test
 
-test github webhook
-test
+- test github webhook
+- test
