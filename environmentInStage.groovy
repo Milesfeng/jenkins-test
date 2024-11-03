@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     // FOO will be available in entire pipeline
-    FOO = "PIPELINE"
+    FOO = "PIPELINE "
   }
 
   stages {
