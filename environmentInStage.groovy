@@ -57,16 +57,17 @@ pipeline {
             }
         }
     }
-    stage('Get Pusher Info') {
-        steps {
-            script {
-                def pusherName = sh(
-                    script: "echo ${env.GITHUB_PUSHER_NAME}",
-                    returnStdout: true
-                ).trim()
-                echo "Started by GitHub push by: ${pusherName}"
-            }
-        }
-    }    
+     stage('Print Build Causes') {
+          steps {
+              script {
+                  // 取得所有 Build Causes
+                  def causes = currentBuild.rawBuild.getCauses()
+                  echo "Build Causes:"
+                  causes.each { cause ->
+                      echo cause.toString()
+                  }
+              }
+          }
+      }    
   }
 }
