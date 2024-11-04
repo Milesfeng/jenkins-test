@@ -61,9 +61,7 @@ pipeline {
         stage('Print Build Causes') {
             steps {
                 script {
-                    def causes = currentBuild.getBuildCauses()
-                    echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
-                    echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
+                    echo "${currentBuild.buildCauses}"
 
                 }
             }
