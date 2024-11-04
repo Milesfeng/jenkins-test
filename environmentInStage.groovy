@@ -54,6 +54,17 @@ pipeline {
                 }
             }
         }
+    }
+    stage('Get Pusher Info') {
+        steps {
+            script {
+                def pusherName = sh(
+                    script: "echo ${env.GITHUB_PUSHER_NAME}",
+                    returnStdout: true
+                ).trim()
+                echo "Started by GitHub push by: ${pusherName}"
+            }
+        }
     }    
   }
 }
