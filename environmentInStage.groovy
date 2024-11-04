@@ -28,6 +28,28 @@ pipeline {
           sh 'echo "GIT_AUTHOR_EMAIL: $GIT_AUTHOR_EMAIL"'
           sh 'echo "CHANGE_TITLE: $CHANGE_TITLE"'        
       }
+    }
+    stage('Get Changes') {
+        steps {
+            script {
+
+                if (currentBuild.changeSets.size() == 0) {
+                    echo "No changes detected in this build."
+                } else {
+                    echo "Changes detected:"
+                    for (changeSet in currentBuild.changeSets) {
+                        for (entry in changeSet.items) {
+                            echo "Commit by ${entry.author}: ${entry.msg}"
+                            echo "Commit ID: ${entry.commitId}"
+
+                            for (file in entry.affectedFiles) {
+                                echo "Modified file: ${file.path}"
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }    
   }
 }
