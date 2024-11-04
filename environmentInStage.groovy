@@ -61,13 +61,8 @@ pipeline {
     stage('Print Build Causes') {
         steps {
             script {
-              if(currentBuild.upstreamBuilds){
-                print("Parent")
-                print(currentBuild.upstreamBuilds[0].getBuildCauses()[0].userId)
-              } else {
-                print("No parent")
-                print(currentBuild.getBuildCauses()[0].userId)
-              }
+            echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
+
             }
         }
     }
