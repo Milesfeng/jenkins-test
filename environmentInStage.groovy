@@ -57,11 +57,20 @@ pipeline {
             }
         }
     }
-    stage('Print Build Causes') {
-        steps {
-            script {
-                def causes = currentBuild.getBuildCauses()
-                echo "Build Causes:" causes
+    stages {
+        stage('Print Build Causes') {
+            steps {
+                script {
+                    def causes = currentBuild.getBuildCauses()
+                    def jsonSlurper = new JsonSlurper()
+
+                    causes.each { cause ->
+                        def causeData = jsonSlurper.parseText(cause.toString())
+                        if (causeData.shortDescription.contains("by")) {
+                            def userName = causeData.shortDescription.split("by ")[1]
+                            echo "Triggered by User: ${userName}"
+                        }
+                    }
                 }
             }
         }
