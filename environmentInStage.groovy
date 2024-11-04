@@ -25,7 +25,6 @@ pipeline {
       steps {
           shell """#!/bin/bash
 echo 'GIT_COMMIT:' $GIT_COMMIT
-echo 'GIT_AUTHOR_EMAIL:' $GIT_AUTHOR_EMAIL
 echo 'CHANGE_TITLE:' $CHANGE_TITLE
 echo 'CHANGE_AUTHOR:' $CHANGE_AUTHOR
 echo 'CHANGE_AUTHOR_EMAIL:' $CHANGE_AUTHOR_EMAIL
