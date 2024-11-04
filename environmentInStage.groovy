@@ -61,9 +61,7 @@ pipeline {
         steps {
             script {
                 def causes = currentBuild.getBuildCauses()
-                echo "Build Causes:"
-                causes.each { cause ->
-                    echo cause.toString()
+                echo "Build Causes:" causes
                 }
             }
         }
