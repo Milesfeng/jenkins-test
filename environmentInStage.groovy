@@ -60,13 +60,17 @@ pipeline {
 
     stage('Print Build Causes') {
         steps {
-          script {
-              def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+          // script {
+          //     def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
               
-              def user = sh(script: "echo '${buildCauseDescription}' | awk '{print \$NF}'", returnStdout: true).trim()
+          //     def user = sh(script: "echo '${buildCauseDescription}' | awk '{print \$NF}'", returnStdout: true).trim()
               
-              echo "Triggered by User: ${user}"
-          }
+          //     echo "${user}"
+          // }
+          shell """#!/bin/bash
+            buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+            echo '${buildCauseDescription}' | awk '{print \$NF}'
+          """
         }
     }
  
