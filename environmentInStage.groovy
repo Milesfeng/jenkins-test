@@ -62,7 +62,7 @@ pipeline {
             steps {
                 script {
                     def causes = currentBuild.getBuildCauses()
-                    def name = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName
+                    echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
                     echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
 
                 }
