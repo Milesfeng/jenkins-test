@@ -57,17 +57,16 @@ pipeline {
             }
         }
     }
-     stage('Print Build Causes') {
-          steps {
-              script {
-                  // 取得所有 Build Causes
-                  def causes = currentBuild.rawBuild.getCauses()
-                  echo "Build Causes:"
-                  causes.each { cause ->
-                      echo cause.toString()
-                  }
-              }
-          }
-      }    
+    stage('Print Build Causes') {
+        steps {
+            script {
+                def causes = currentBuild.getBuildCauses()
+                echo "Build Causes:"
+                causes.each { cause ->
+                    echo cause.toString()
+                }
+            }
+        }
+    }  
   }
 }
