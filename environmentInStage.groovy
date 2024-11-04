@@ -62,7 +62,6 @@ pipeline {
             steps {
                 script {
                     BUILD_TRIGGERED_BY = currentBuild.getBuildCauses().shortDescription.size() > 1 ?  currentBuild.getBuildCauses().shortDescription[1] : currentBuild.getBuildCauses().shortDescription[0]
-                    echo $BUILD_TRIGGERED_BY
                 }
             }
         }
