@@ -31,7 +31,10 @@ pipeline {
           sh 'echo "GITHUB_PR_TRIGGER_SENDER_EMAIL: $GITHUB_PR_TRIGGER_SENDER_EMAIL"'
           sh 'echo "GITHUB_PR_COMMIT_AUTHOR_EMAIL: $GITHUB_PR_COMMIT_AUTHOR_EMAIL"'
           sh 'echo "GITHUB_PR_HEAD_SHA: $GITHUB_PR_HEAD_SHA"'
-          sh  'echo "Pull Request ID: ${env.CHANGE_ID}"'
+          sh '''
+          #!/bin/bash
+          echo "Pull Request ID: ${env.CHANGE_ID}"
+      '''
       }
     }
     stage('Get Changes') {
