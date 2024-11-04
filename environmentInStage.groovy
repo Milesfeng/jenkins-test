@@ -64,8 +64,7 @@ pipeline {
               echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
               echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
               echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
-              def name = currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName
-              echo $name
+              echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName}"
             }
         }
     }
