@@ -24,6 +24,9 @@ pipeline {
     stage("pr-test") {
       steps {
           sh 'echo "GIT_COMMIT: $GIT_COMMIT"'
+          sh 'echo "GIT_COMMITTER_EMAIL: $GIT_COMMITTER_EMAIL"'
+          sh 'echo "GIT_AUTHOR_EMAIL: $GIT_AUTHOR_EMAIL"'
+          sh 'echo "CHANGE_TITLE: $CHANGE_TITLE"'        
       }
     }    
   }
