@@ -21,5 +21,10 @@ pipeline {
         sh 'echo "FOO is $FOO and BAR is $BAR"'
       }
     }
+    stage("pr-test") {
+      steps {
+          sh 'echo "GIT_COMMIT: $GIT_COMMIT"'
+      }
+    }    
   }
 }
