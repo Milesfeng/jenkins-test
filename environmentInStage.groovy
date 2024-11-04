@@ -60,17 +60,31 @@ pipeline {
 
     stage('Print Build Causes') {
         steps {
-          // script {
-          //     def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+          script {
+              def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
               
-          //     def user = sh(script: "echo '${buildCauseDescription}' | awk '{print \$NF}'", returnStdout: true).trim()
+              def user = sh(script: "echo '${buildCauseDescription}' | awk '{print \$NF}'", returnStdout: true).trim()
               
-          //     echo "${user}"
-          // }
-          shell """#!/bin/bash
-            buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
-            echo '${buildCauseDescription}' | awk '{print \$NF}'
-          """
+              echo "${user}"
+
+             // 確保 currentBuild.changeSets 不為空
+              if (currentBuild.changeSets) {
+                  echo "Change Sets:"
+                  // 遍歷每個變更集
+                  currentBuild.changeSets.each { changeSet ->
+                      // 獲取變更集的每個項目
+                      changeSet.items.each { change ->
+                          // 打印每個變更的詳細信息
+                          echo "Commit ID: ${change.commitId}"
+                          echo "Author: ${change.author?.fullName}"
+                          echo "Message: ${change.msg}"
+                      }
+                  }
+              } else {
+                  echo "No changes detected."
+              }            
+          }
+
         }
     }
  
