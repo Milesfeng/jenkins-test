@@ -65,6 +65,7 @@ pipeline {
               echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
               echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
               echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName}"
+              echo "${currentBuild.getBuildCauses()[0].shortDescription}"
             }
         }
     }
