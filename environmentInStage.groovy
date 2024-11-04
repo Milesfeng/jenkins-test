@@ -23,9 +23,7 @@ pipeline {
     }
     stage("pr-test") {
       steps {
-          shell """#!/bin/bash
-echo 'GIT_COMMIT:' $GIT_COMMIT
-"""
+          sh 'echo "GIT_COMMIT: $GIT_COMMIT"'
       }
     }    
   }
