@@ -61,8 +61,9 @@ pipeline {
     stage('Print Build Causes') {
         steps {
             script {
-            echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
-
+              echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
+              echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
+              echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
             }
         }
     }
