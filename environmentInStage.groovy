@@ -61,13 +61,9 @@ pipeline {
     stage('Print Build Causes') {
         steps {
             script {
-              echo "${currentBuild.buildCauses}" // same as currentBuild.getBuildCauses()
-              echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserCause')}"
-              echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
-              echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName}"
-              echo "${currentBuild.getBuildCauses()[0].shortDescription}"
-              def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
-              echo ${buildCauseDescription} | awk '{print $NF}'
+              echo "${currentBuild.getBuildCauses()[0].shortDescription}"| awk '{print $NF}'
+              // def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+              // echo ${buildCauseDescription} | awk '{print $NF}'
 
             }
         }
