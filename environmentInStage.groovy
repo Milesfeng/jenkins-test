@@ -66,8 +66,8 @@ pipeline {
               echo "${currentBuild.getBuildCauses('hudson.triggers.TimerTrigger$TimerTriggerCause')}"
               echo "${currentBuild.getBuildCauses('hudson.model.Cause$UserIdCause').userName}"
               echo "${currentBuild.getBuildCauses()[0].shortDescription}"
-              cause = currentBuild.getBuildCauses()[0].shortDescription
-              echo $cause | awk '{print $NF}'
+              def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+              echo $buildCauseDescription | awk '{print $NF}'
 
             }
         }
