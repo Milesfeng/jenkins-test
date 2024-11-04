@@ -61,8 +61,13 @@ pipeline {
     stage('Print Build Causes') {
         steps {
             script {
-                BUILD_TRIGGERED_BY = currentBuild.getBuildCauses().shortDescription.size() > 1 ?  currentBuild.getBuildCauses().shortDescription[1] : currentBuild.getBuildCauses().shortDescription[0]
-              echo $BUILD_TRIGGERED_BY
+              if(currentBuild.upstreamBuilds){
+                print("Parent")
+                print(currentBuild.upstreamBuilds[0].getBuildCauses()[0].userId)
+              } else {
+                print("No parent")
+                print(currentBuild.getBuildCauses()[0].userId)
+              }
             }
         }
     }
