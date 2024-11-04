@@ -24,7 +24,6 @@ pipeline {
     stage("pr-test") {
       steps {
           shell """#!/bin/bash
-echo 'GIT_AUTHOR_NAME:' $GIT_AUTHOR_NAME
 echo 'GIT_COMMIT:' $GIT_COMMIT
 echo 'GIT_AUTHOR_EMAIL:' $GIT_AUTHOR_EMAIL
 echo 'CHANGE_TITLE:' $CHANGE_TITLE
