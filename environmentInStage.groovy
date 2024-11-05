@@ -62,13 +62,19 @@ pipeline {
         steps {
           script {
               def buildCauseDescription = currentBuild.getBuildCauses()[0].shortDescription
+              
               def user = sh(script: "echo '${buildCauseDescription}' | awk '{print \$NF}'", returnStdout: true).trim()
+              
               echo "${user}"
-            
+
+             // 確保 currentBuild.changeSets 不為空
               if (currentBuild.changeSets) {
                   echo "Change Sets:"
+                  // 遍歷每個變更集
                   currentBuild.changeSets.each { changeSet ->
-                      changeSet.items.each { change ->  
+                      // 獲取變更集的每個項目
+                      changeSet.items.each { change ->
+                          // 打印每個變更的詳細信息
                           echo "Commit ID: ${change.commitId}"
                           echo "Author: ${change.author?.fullName}"
                           echo "Message: ${change.msg}"
