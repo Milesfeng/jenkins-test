@@ -21,20 +21,20 @@ pipeline {
     //     sh 'echo "FOO is $FOO and BAR is $BAR"'
     //   }
     // }
-    // stage("pr-test") {
-    //   steps {
-    //       sh 'echo "GIT_COMMIT: $GIT_COMMIT"'
-    //       sh 'echo "GIT_COMMITTER_EMAIL: $GIT_COMMITTER_EMAIL"'
-    //       sh 'echo "GIT_AUTHOR_EMAIL: $GIT_AUTHOR_EMAIL"'
-    //       sh 'echo "CHANGE_TITLE: $CHANGE_TITLE"'
-    //       sh 'echo "GITHUB_PR_TITLE: $GITHUB_PR_TITLE"'
-    //       sh 'echo "GITHUB_PR_TRIGGER_SENDER_EMAIL: $GITHUB_PR_TRIGGER_SENDER_EMAIL"'
-    //       sh 'echo "GITHUB_PR_COMMIT_AUTHOR_EMAIL: $GITHUB_PR_COMMIT_AUTHOR_EMAIL"'
-    //       sh 'echo "GITHUB_PR_HEAD_SHA: $GITHUB_PR_HEAD_SHA"'
-    //       sh 'echo "CHANGE_ID: $CHANGE_ID"'
-    //       sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
-    //   }
-    // }
+    stage("pr-test") {
+      steps {
+          sh 'echo "GIT_COMMIT: $GIT_COMMIT"'
+          sh 'echo "GIT_COMMITTER_EMAIL: $GIT_COMMITTER_EMAIL"'
+          sh 'echo "GIT_AUTHOR_EMAIL: $GIT_AUTHOR_EMAIL"'
+          sh 'echo "CHANGE_TITLE: $CHANGE_TITLE"'
+          sh 'echo "GITHUB_PR_TITLE: $GITHUB_PR_TITLE"'
+          sh 'echo "GITHUB_PR_TRIGGER_SENDER_EMAIL: $GITHUB_PR_TRIGGER_SENDER_EMAIL"'
+          sh 'echo "GITHUB_PR_COMMIT_AUTHOR_EMAIL: $GITHUB_PR_COMMIT_AUTHOR_EMAIL"'
+          sh 'echo "GITHUB_PR_HEAD_SHA: $GITHUB_PR_HEAD_SHA"'
+          sh 'echo "CHANGE_ID: $CHANGE_ID"'
+          sh 'echo "BRANCH_NAME: $BRANCH_NAME"'
+      }
+    }
     // stage('Get Changes') {
     //     steps {
     //         script {
